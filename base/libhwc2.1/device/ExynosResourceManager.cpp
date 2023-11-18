@@ -948,19 +948,6 @@ int32_t ExynosResourceManager::validateLayer(uint32_t index, ExynosDisplay *disp
     if ((layer == NULL) || (display == NULL))
         return eUnknown;
 
-#ifdef ENABLE_FORCE_GPU_FOR_BOOTANIM
-    char value[256];
-    int bootanim_exit;
-    if (property_get("service.bootanim.progress", value, "")) {
-        property_get("service.bootanim.exit", value, "0");
-        bootanim_exit = atoi(value);
-
-        if (!bootanim_exit) {
-            return eForceFbEnabled;
-        }
-    }
-#endif
-
     if (exynosHWCControl.forceGpu == 1) {
         return eForceFbEnabled;
     }
