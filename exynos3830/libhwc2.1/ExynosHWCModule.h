@@ -28,6 +28,8 @@
 #define DP_LINK_NAME	"10ab0000.displayport"
 #define DP_UEVENT_NAME	"change@/devices/platform/%s/extcon/extcon0"
 #define DP_CABLE_STATE_NAME "/sys/devices/platform/%s/extcon/extcon0/cable.%d/state"
+#define BRIGHTNESS_NODE_BASE "/sys/devices/platform/panel_drv@0/backlight/panel/brightness"
+#define MAX_BRIGHTNESS_NODE_BASE "/sys/devices/platform/panel_drv@0/backlight/panel/max_brightness"
 
 #define IDMA(x) static_cast<decon_idma_type>(x)
 
