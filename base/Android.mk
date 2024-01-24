@@ -14,13 +14,32 @@
 
 ifneq ($(findstring exynos, $(TARGET_SOC_NAME)), $(findstring s5e, $(TARGET_SOC_NAME)))
 build_dirs :=  \
-    libhwjpeg  \
     libfimg    \
     libacryl \
-    libmpp \
     libmemtrack \
     giantmscl \
     libdrmresource
+
+ifeq ($(TARGET_USES_UNIVERSAL_LIBHWJPEG), true)
+build_dirs +=  \
+    libhwjpeg
+endif
+
+ifdef BOARD_HWC_VERSION
+build_dirs += $(BOARD_HWC_VERSION)
+
+ifeq ($(BOARD_HWC_VERSION), hwc3)
+# HWC3 depends on libexynosdisplay in libhwc2.1
+build_dirs += libhwc2.1
+endif
+
+ifeq ($(BOARD_HWC_VERSION), libhwc1)
+# HWC1 has a hard dependency on libexynosgscaler
+BOARD_USES_LEGACY_LIBSCALER := true
+
+build_dirs += libmpp
+endif
+endif
 
 ifeq ($(BOARD_USES_LEGACY_LIBSCALER), true)
 build_dirs +=  \
@@ -29,15 +48,6 @@ build_dirs +=  \
 else
 build_dirs +=  \
     libscaler
-endif
-
-ifdef BOARD_HWC_VERSION
-build_dirs += $(BOARD_HWC_VERSION)
-
-ifeq ($(BOARD_HWC_VERSION), hwc3)
-#hwc3 depends libexynosdisplay in libhwc2.1
-build_dirs += libhwc2.1
-endif
 endif
 
 include $(call all-named-subdir-makefiles,$(build_dirs))

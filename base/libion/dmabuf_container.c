@@ -18,6 +18,7 @@
 
 #define LOG_TAG "dmabuf-container"
 
+#include <fcntl.h>
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
