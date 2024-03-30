@@ -3,11 +3,11 @@
 #include "ExynosHWCUtils.h"
 #include "ExynosMPPModule.h"
 
-#define DISPLAY_LOGD(msg, ...) ALOGD("[%s] " msg, mDisplayName.string(), ##__VA_ARGS__)
-#define DISPLAY_LOGV(msg, ...) ALOGV("[%s] " msg, mDisplayName.string(), ##__VA_ARGS__)
-#define DISPLAY_LOGI(msg, ...) ALOGI("[%s] " msg, mDisplayName.string(), ##__VA_ARGS__)
-#define DISPLAY_LOGW(msg, ...) ALOGW("[%s] " msg, mDisplayName.string(), ##__VA_ARGS__)
-#define DISPLAY_LOGE(msg, ...) ALOGE("[%s] " msg, mDisplayName.string(), ##__VA_ARGS__)
+#define DISPLAY_LOGD(msg, ...) ALOGD("[%s] " msg, mDisplayName.c_str(), ##__VA_ARGS__)
+#define DISPLAY_LOGV(msg, ...) ALOGV("[%s] " msg, mDisplayName.c_str(), ##__VA_ARGS__)
+#define DISPLAY_LOGI(msg, ...) ALOGI("[%s] " msg, mDisplayName.c_str(), ##__VA_ARGS__)
+#define DISPLAY_LOGW(msg, ...) ALOGW("[%s] " msg, mDisplayName.c_str(), ##__VA_ARGS__)
+#define DISPLAY_LOGE(msg, ...) ALOGE("[%s] " msg, mDisplayName.c_str(), ##__VA_ARGS__)
 
 ExynosPrimaryDisplay::ExynosPrimaryDisplay(int numGSCs, struct exynos5_hwc_composer_device_1_t *pdev) :
     ExynosOverlayDisplay(numGSCs, pdev)
@@ -216,10 +216,10 @@ void ExynosPrimaryDisplay::handleStaticLayers(hwc_display_contents_1_t *contents
         android::String8 result;
         result.clear();
         dump(result);
-        ALOGE("%s", result.string());
+        ALOGE("%s", result.c_str());
         result.clear();
         dumpLayerInfo(result);
-        ALOGE("%s", result.string());
+        ALOGE("%s", result.c_str());
         ALOGE("Display Config:");
         dump_win_config(&win_data.config[0]);
     }

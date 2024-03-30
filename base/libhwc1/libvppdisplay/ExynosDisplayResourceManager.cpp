@@ -77,13 +77,13 @@ ExynosDisplayResourceManager::ExynosDisplayResourceManager(struct exynos5_hwc_co
 
 ExynosDisplayResourceManager::~ExynosDisplayResourceManager()
 {
-    if (!mInternalMPPs.isEmpty()) {
+    if (!mInternalMPPs.empty()) {
         for (size_t i = 0; i < mInternalMPPs.size(); i++) {
             delete mInternalMPPs[i];
         }
         mInternalMPPs.clear();
     }
-    if (!mExternalMPPs.isEmpty()) {
+    if (!mExternalMPPs.empty()) {
         for (size_t i = 0; i < mExternalMPPs.size(); i++) {
             delete mExternalMPPs[i];
         }
@@ -211,36 +211,36 @@ void ExynosDisplayResourceManager::printDisplyInfos(size_t type)
     android::String8 result;
 
     dumpMPPs(result);
-    HDEBUGLOGD(eDebugResourceManager, "%s", result.string());
+    HDEBUGLOGD(eDebugResourceManager, "%s", result.c_str());
     if (type == EXYNOS_PRIMARY_DISPLAY) {
         HDEBUGLOGD(eDebugResourceManager, "Primary display");
         result.clear();
         mHwc->primaryDisplay->dumpLayerInfo(result);
-        HDEBUGLOGD(eDebugResourceManager, "%s", result.string());
+        HDEBUGLOGD(eDebugResourceManager, "%s", result.c_str());
 
         result.clear();
         mHwc->primaryDisplay->dumpMPPs(result);
-        HDEBUGLOGD(eDebugResourceManager, "%s", result.string());
+        HDEBUGLOGD(eDebugResourceManager, "%s", result.c_str());
     } else if (type == EXYNOS_EXTERNAL_DISPLAY) {
         HDEBUGLOGD(eDebugResourceManager, "External display");
         result.clear();
         mHwc->externalDisplay->dumpLayerInfo(result);
-        HDEBUGLOGD(eDebugResourceManager, "%s", result.string());
+        HDEBUGLOGD(eDebugResourceManager, "%s", result.c_str());
 
         result.clear();
         mHwc->externalDisplay->dumpMPPs(result);
-        HDEBUGLOGD(eDebugResourceManager, "%s", result.string());
+        HDEBUGLOGD(eDebugResourceManager, "%s", result.c_str());
     }
 #ifdef USES_VIRTUAL_DISPLAY
     else if (type == EXYNOS_VIRTUAL_DISPLAY) {
         HDEBUGLOGD(eDebugResourceManager, "Virtual display");
         result.clear();
         mHwc->virtualDisplay->dumpLayerInfo(result);
-        HDEBUGLOGD(eDebugResourceManager, "%s", result.string());
+        HDEBUGLOGD(eDebugResourceManager, "%s", result.c_str());
 
         result.clear();
         mHwc->virtualDisplay->dumpMPPs(result);
-        HDEBUGLOGD(eDebugResourceManager, "%s", result.string());
+        HDEBUGLOGD(eDebugResourceManager, "%s", result.c_str());
     }
 #endif
 }

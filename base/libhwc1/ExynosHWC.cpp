@@ -621,7 +621,7 @@ void exynos5_dump(hwc_composer_device_1* dev, char *buff, int buff_len)
         pdev->virtualDisplay->dumpLayerInfo(result);
     }
 #endif
-    strlcpy(buff, result.string(), buff_len);
+    strlcpy(buff, result.c_str(), buff_len);
 }
 
 int exynos5_getDisplayConfigs(struct hwc_composer_device_1 *dev,

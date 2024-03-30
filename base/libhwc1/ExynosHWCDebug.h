@@ -39,11 +39,11 @@ inline bool hwcCheckDebugMessages(uint32_t type)
 #else
 #define DISPLAY_LOGD(type, msg, ...) \
     if (hwcCheckDebugMessages(type)) \
-        ALOGD("[%s] " msg, mDisplayName.string(), ##__VA_ARGS__)
+        ALOGD("[%s] " msg, mDisplayName.c_str(), ##__VA_ARGS__)
 #endif
-#define DISPLAY_LOGV(msg, ...) ALOGV("[%s] " msg, mDisplayName.string(), ##__VA_ARGS__)
-#define DISPLAY_LOGI(msg, ...) ALOGI("[%s] " msg, mDisplayName.string(), ##__VA_ARGS__)
-#define DISPLAY_LOGW(msg, ...) ALOGW("[%s] " msg, mDisplayName.string(), ##__VA_ARGS__)
-#define DISPLAY_LOGE(msg, ...) ALOGE("[%s] " msg, mDisplayName.string(), ##__VA_ARGS__)
+#define DISPLAY_LOGV(msg, ...) ALOGV("[%s] " msg, mDisplayName.c_str(), ##__VA_ARGS__)
+#define DISPLAY_LOGI(msg, ...) ALOGI("[%s] " msg, mDisplayName.c_str(), ##__VA_ARGS__)
+#define DISPLAY_LOGW(msg, ...) ALOGW("[%s] " msg, mDisplayName.c_str(), ##__VA_ARGS__)
+#define DISPLAY_LOGE(msg, ...) ALOGE("[%s] " msg, mDisplayName.c_str(), ##__VA_ARGS__)
 
 #endif
