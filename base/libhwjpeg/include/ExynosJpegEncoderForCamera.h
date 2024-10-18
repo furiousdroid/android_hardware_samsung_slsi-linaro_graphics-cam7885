@@ -14,7 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+#ifdef EXYNOS_JPEG_ENCODER_FOR_CAMERA_GLUE
+#include "ExynosJpegEncoderForCameraGlue.h"
+#else
 #ifndef __HARDWARE_EXYNOS_JPEG_ENCODER_FOR_CAMERA_H__
 #define __HARDWARE_EXYNOS_JPEG_ENCODER_FOR_CAMERA_H__
 
@@ -29,7 +31,7 @@
 class CAppMarkerWriter; // defined in libhwjpeg/AppMarkerWriter.h
 class ThumbnailScaler; // defined in libhwjpeg/thumbnail_scaler.h
 
-class ExynosJpegEncoderForCamera: public ExynosJpegEncoder {
+class ExynosJpegEncoderForCamera: public ExynosJpegEncoder {  
     enum {
         STATE_THUMBSIZE_CHANGED = STATE_BASE_MAX << 0,
         STATE_HWFC_ENABLED = STATE_BASE_MAX << 1,
@@ -134,3 +136,4 @@ public:
 };
 
 #endif //__HARDWARE_EXYNOS_JPEG_ENCODER_FOR_CAMERA_H__
+#endif // EXYNOS_JPEG_ENCODER_FOR_CAMERA_GLUE
